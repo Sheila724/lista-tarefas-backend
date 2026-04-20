@@ -199,4 +199,4 @@ lista-tarefas-backend/
 
 # Autores
 
-### Desenvolvido por **Gabriel Araujo** e **Sheila Alves** - 6° DSM - FATEC Franca "Dr. Thomaz Novelino"
+### Desenvolvido por **Gabriel Araujo de Pádua** e **Sheila Alves de Araujo** - 6° DSM - FATEC Franca "Dr. Thomaz Novelino"
