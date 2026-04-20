@@ -38,6 +38,7 @@ public class TarefaServiceImpl implements TarefaService {
         entity.setDescricao(request.getDescricao());
         entity.setStatus(request.getStatus());
         entity.setObservacoes(request.getObservacoes());
+        tarefaRepository.save(entity);
         return TarefaResponse.fromEntity(entity);
     }
 

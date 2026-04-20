@@ -112,6 +112,35 @@ class TarefaServiceImplTest {
     }
 
     @Test
+    void excluir_quandoExiste_deveInvocarDelete() {
+        when(tarefaRepository.existsById(1L)).thenReturn(true);
+
+        tarefaService.excluir(1L);
+
+        verify(tarefaRepository).deleteById(1L);
+    }
+
+    @Test
+    void buscarPorId_quandoExiste_deveRetornarDto() {
+        when(tarefaRepository.findById(1L)).thenReturn(Optional.of(tarefaPersistida));
+
+        TarefaResponse resp = tarefaService.buscarPorId(1L);
+
+        assertThat(resp.getId()).isEqualTo(1L);
+        assertThat(resp.getNome()).isEqualTo("Estudar Spring");
+        assertThat(resp.getStatus()).isEqualTo(StatusTarefa.PENDENTE);
+    }
+
+    @Test
+    void buscarPorId_quandoNaoExiste_deveLancar() {
+        when(tarefaRepository.findById(99L)).thenReturn(Optional.empty());
+
+        assertThatThrownBy(() -> tarefaService.buscarPorId(99L))
+                .isInstanceOf(RecursoNaoEncontradoException.class)
+                .hasMessageContaining("99");
+    }
+
+    @Test
     void listarTodas_deveMapearLista() {
         when(tarefaRepository.findAll()).thenReturn(List.of(tarefaPersistida));
 

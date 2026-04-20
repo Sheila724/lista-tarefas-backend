@@ -2,3 +2,5 @@
 /.idea/
 *.iml
 .DS_Store
+.env
+/ANALISE_PROJETO.md
